@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -67,5 +68,24 @@ public class SessionServiceTest {
         assertEquals(1, result.size());
         assertEquals(listeSession, result);
         assertEquals("Voyage", result.get(0).getTheme());
+    }
+
+    @Test
+    void testRecupererParId() {
+        //GIVEN
+        Session session = new Session();
+        session.setId(1L);
+        session.setTheme("Voyage");
+        session.setDate(LocalDateTime.now());
+        session.setStatut(StatutSession.TERMINEE);
+
+        Mockito.when(sessionRepository.findById(1L)).thenReturn(Optional.of(session));
+
+        //WHEN
+        Session result = sessionService.findById(1L);
+
+        //THEN
+        assertEquals(1L, result.getId());
+
     }
 }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,5 +25,12 @@ public class SessionService {
 
     public List<Session> getAllSession(){
         return sessionRepository.findAll();
+    }
+
+    public Session findById(Long id) {
+        // 1. Le repository renvoie bien son Optional
+        return sessionRepository.findById(id)
+                // 2. Le service applique le .orElseThrow() pour déballer l'Optional !
+                .orElseThrow(() -> new IllegalArgumentException("Session introuvable"));
     }
 }
