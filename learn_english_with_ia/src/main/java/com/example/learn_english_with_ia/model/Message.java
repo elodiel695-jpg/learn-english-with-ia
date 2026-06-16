@@ -25,5 +25,6 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "session_id", nullable = false)
+    @NonNull
     private Session session;
 }
