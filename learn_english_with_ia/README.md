@@ -1,9 +1,40 @@
-Learn English with AILearn English with AI est une application Spring Boot permettant aux utilisateurs de pratiquer leur anglais de manière interactive et de recevoir une évaluation personnalisée de leur niveau grâce à l'intégration d'un Modèle de Langage (LLM) exécuté en local.🛠️ Stack TechniqueBack-end : Java (Version Java), Spring Boot, Spring Data JPAIA & LLM : LangChain4j, Ollama (Llama 3.2)Base de données : H2 (Base de données en mémoire pour le développement)Outillage & Tests : Maven, Postman🚀 Fonctionnalités PrincipalesGestion des sessions d'apprentissage : Création de sessions thématiques personnalisées (ex. Voyage, Grammaire).Échanges de messages : Enregistrement dynamique des conversations entre l'utilisateur et le système.Analyse & Génération de rapports par IA :Traitement du contexte global de la conversation via un flux Java (Streams).Envoi dynamique du prompt vers un modèle LLM local via LangChain4j.Génération d'un bilan détaillé (score, analyse du vocabulaire, pistes d'amélioration).🏛️ Architecture & Choix TechniquesArchitecture en couches : Organisation claire respectant le découpage Controller / Service / Repository / Entity.Persistance adaptée : Utilisation d'annotations JPA spécifiques (@Column(columnDefinition = "TEXT")) pour gérer le stockage de textes volumineux générés par l'IA.Génération de requêtes JPA : Exploitation des méthodes dérivées de Spring Data JPA (findBySession) pour simplifier les interactions avec la base de données.Traitement de données fonctionnel : Utilisation de l'API Stream de Java 8+ pour concaténer et formater la liste de messages en un prompt optimisé.📋 Prérequis & InstallationCloner le repository :Bashgit clone <URL_DE_TON_REPO_GITLAB>
+# 🇬🇧 Learn English with AI
 
-Configurer et lancer Ollama en local :
-Bashollama pull llama3.2:3b
-ollama run llama3.2:3b
+**Learn English with AI** est une application Spring Boot permettant aux utilisateurs de pratiquer leur anglais de manière interactive et de recevoir une évaluation personnalisée de leur niveau grâce à l'intégration d'un Modèle de Langage (LLM) exécuté en local.
 
-Lancer l'application Spring Boot :Bashmvn spring-boot:run
+---
 
-📬 Endpoints principaux (API Rest)MéthodeRouteDescriptionPOST/api/sessions/start?theme={theme}Démarre une nouvelle sessionPOST/api/messages/send?sessionId={id}&text={message}Envoie un message dans la sessionPOST/api/reports/session/{id}Génère le rapport d'analyse par l'IA
+## 🛠️ Stack Technique
+
+* **Back-end :** Java, Spring Boot, Spring Data JPA
+* **IA & LLM :** LangChain4j, Ollama (Llama 3.2)
+* **Base de données :** H2 (Base de données en mémoire)
+* **Outillage & Tests :** Maven, Postman
+
+---
+
+## 🚀 Fonctionnalités Principales
+
+* **Gestion des sessions d'apprentissage :** Création de sessions thématiques personnalisées (ex. *Voyage*, *Grammaire*).
+* **Échanges de messages :** Enregistrement dynamique des conversations entre l'utilisateur et le système.
+* **Analyse & Génération de rapports par IA :**
+    * Traitement du contexte global de la conversation via l'API Stream de Java.
+    * Envoi dynamique du prompt vers un modèle LLM local via LangChain4j.
+    * Génération d'un bilan détaillé (score, analyse du vocabulaire, pistes d'amélioration).
+
+---
+
+## 🏛️ Architecture & Choix Techniques
+
+* **Architecture en couches :** Organisation respectant le découpage *Controller / Service / Repository / Entity*.
+* **Persistance adaptée :** Utilisation de `@Column(columnDefinition = "TEXT")` pour gérer le stockage de textes volumineux.
+* **Génération de requêtes JPA :** Exploitation des méthodes dérivées de Spring Data JPA (`findBySession`).
+* **Traitement de données fonctionnel :** Utilisation des Java Streams (`Collectors.joining`) pour concaténer les messages en un prompt optimisé.
+
+---
+
+## 📋 Prérequis & Installation
+
+1. **Cloner le repository :**
+   ```bash
+   git clone [https://github.com/elodiel695-jpg/learn-english-with-ia.git](https://github.com/elodiel695-jpg/learn-english-with-ia.git)
