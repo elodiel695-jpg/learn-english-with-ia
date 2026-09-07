@@ -17,6 +17,7 @@ public class Report {
     @Enumerated(EnumType.STRING)
     private ScoreGlobal score;
 
+    @Column(columnDefinition = "TEXT")
     private String texteAnalyseIA;
 
     @OneToOne
